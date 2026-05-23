@@ -91,7 +91,7 @@ a {
   position: relative;
   width: min(100%, 680px);
   min-height: var(--hero-banner-height);
-  margin: 0 auto 28px;
+  margin: 0 auto 54px;
   padding: 14px 24px;
   display: flex;
   align-items: center;
@@ -99,6 +99,19 @@ a {
   background: var(--hero-main-green);
   color: #ffffff;
   border-radius: 28px;
+}
+
+.hero-top-banner::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -24px;
+  width: 0;
+  height: 0;
+  border-left: 26px solid transparent;
+  border-right: 26px solid transparent;
+  border-top: 24px solid var(--hero-main-green);
+  transform: translateX(-50%);
 }
 
 .hero-top-banner-text {
@@ -114,7 +127,7 @@ a {
 .hero-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.1fr);
-  align-items: end;
+  align-items: start;
   gap: 18px;
 }
 
@@ -122,7 +135,7 @@ a {
 .hero-copy-column {
   position: relative;
   z-index: 2;
-  padding-top: 6px;
+  padding-top: 18px;
 }
 
 .hero-copy-stack {
@@ -265,7 +278,7 @@ a {
 /* Bottom CTA + side panel */
 .hero-bottom-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  grid-template-columns: minmax(0, 1fr) minmax(440px, 520px);
   gap: 28px;
   align-items: end;
   margin-top: 12px;
@@ -334,7 +347,7 @@ a {
 /* Small anchor buttons */
 .hero-nav-buttons {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 12px;
   margin-bottom: 14px;
 }
@@ -357,7 +370,7 @@ a {
 .hero-note {
   margin: 0;
   padding-left: 1.15rem;
-  font-size: 0.98rem;
+  font-size: 1.28rem;
   line-height: 1.65;
 }
 
@@ -640,6 +653,7 @@ a {
     max-width: 720px;
     margin: 0 auto;
     text-align: center;
+    padding-top: 0;
   }
 
   .hero-main-copy,
@@ -689,6 +703,14 @@ a {
     margin: 0 auto;
   }
 
+  .hero-nav-buttons {
+    flex-wrap: wrap;
+  }
+
+  .hero-note {
+    font-size: 1rem;
+  }
+
   .pricing-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -717,6 +739,13 @@ a {
     padding: 12px 12px 14px;
   }
 
+  .hero-top-banner::after {
+    bottom: -18px;
+    border-left-width: 18px;
+    border-right-width: 18px;
+    border-top-width: 18px;
+  }
+
   .hero-top-banner-text {
     font-size: 1.2rem;
     letter-spacing: 0.03em;
@@ -734,12 +763,12 @@ a {
   }
 
   .hero-main-copy {
-    font-size: clamp(2rem, 10vw, 2.8rem);
+    font-size: clamp(1.8rem, 9vw, 2.52rem);
     white-space: normal;
   }
 
   .hero-keywords {
-    font-size: clamp(1.75rem, 8.8vw, 2.4rem);
+    font-size: clamp(1.58rem, 7.9vw, 2.16rem);
     line-height: 1.4;
     white-space: normal;
   }
