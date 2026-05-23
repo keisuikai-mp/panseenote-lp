@@ -141,6 +141,17 @@ a {
   text-align: center;
 }
 
+.plan-name-main,
+.plan-name-sub {
+  display: block;
+}
+
+.plan-name-sub {
+  font-size: 0.74em;
+  line-height: 1.3;
+  margin-top: 0.1rem;
+}
+
 .plan-card.is-disabled .plan-name,
 .plan-card.is-disabled .plan-limit,
 .plan-card.is-disabled .plan-price,
@@ -323,6 +334,10 @@ a {
 
   .plan-name {
     font-size: 1.7rem;
+  }
+
+  .plan-name-sub {
+    font-size: 0.7em;
   }
 
   .plan-price-wrap {

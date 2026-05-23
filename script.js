@@ -35,6 +35,9 @@ function getModeFromLocation() {
   const mode = params.get("mode");
   const from = params.get("from");
 
+  if (mode === "upgrade" && from === "trial") {
+    return "upgrade-trial";
+  }
   if (mode === "upgrade" && from === "basic") {
     return "upgrade-basic";
   }
@@ -45,9 +48,62 @@ function getModeFromLocation() {
 }
 
 function getPricingState(mode) {
+  if (mode === "upgrade-trial") {
+    return {
+      title: "プラン・料金",
+      lead: "試用版は登録件数100件まで完全無料。有料プランはすべて買い切り型です。",
+      plans: [
+        {
+          name: "試用版（トライアル）",
+          limit: "登録上限 100件",
+          price: "¥0",
+          unit: "無料",
+          note: "アカウント登録不要",
+          features: BASE_FEATURES.trial,
+          buttonLabel: "今すぐ試す",
+          href: TRIAL_URL,
+          trial: true,
+          disabled: true,
+        },
+        {
+          name: "ベーシック",
+          limit: "登録上限 200件",
+          price: "¥1,280",
+          unit: "買い切り",
+          note: "税込",
+          features: BASE_FEATURES.paid200,
+          buttonLabel: "購入する",
+          href: LS_NORMAL_CHECKOUT_URL,
+        },
+        {
+          name: "スタンダード",
+          limit: "登録上限 10,000件",
+          price: "¥2,480",
+          unit: "買い切り",
+          note: "税込",
+          features: BASE_FEATURES.paid10000,
+          buttonLabel: "購入する",
+          href: LS_NORMAL_CHECKOUT_URL,
+          featured: true,
+          badge: "おすすめ",
+        },
+        {
+          name: "プレミアム",
+          limit: "登録上限 30,000件",
+          price: "¥4,980",
+          unit: "買い切り",
+          note: "税込",
+          features: BASE_FEATURES.paid30000,
+          buttonLabel: "購入する",
+          href: LS_NORMAL_CHECKOUT_URL,
+        },
+      ],
+    };
+  }
+
   if (mode === "upgrade-basic") {
     return {
-      title: "プラン・料金（ベーシックプランからのアップグレード）",
+      title: "プラン・アップグレード料金",
       lead: "現在、ベーシックプランをご利用中です。ベーシックプランからのアップグレードプランをご紹介します。",
       plans: [
         {
@@ -102,7 +158,7 @@ function getPricingState(mode) {
 
   if (mode === "upgrade-standard") {
     return {
-      title: "プラン・料金（スタンダードプランからのアップグレード）",
+      title: "プラン・アップグレード料金",
       lead: "現在、スタンダードプランをご利用中です。スタンダードプランからのアップグレードプランをご紹介します。",
       plans: [
         {
@@ -206,6 +262,18 @@ function getPricingState(mode) {
   };
 }
 
+function buildPlanNameHtml(name) {
+  const text = String(name || "").trim();
+  const match = text.match(/^(.*?)(（.+）)$/);
+  if (!match) {
+    return '<span class="plan-name-main">' + text + "</span>";
+  }
+  return (
+    '<span class="plan-name-main">' + match[1] + "</span>" +
+    '<span class="plan-name-sub">' + match[2] + "</span>"
+  );
+}
+
 function renderPlans(plans) {
   return plans.map(function (plan) {
     const cardClasses = [
@@ -216,7 +284,7 @@ function renderPlans(plans) {
 
     const badgeHtml = plan.badge
       ? '<div class="plan-badge">' + plan.badge + "</div>"
-      : '<div class="plan-badge" hidden></div>';
+      : "";
 
     const oldPriceHtml = plan.oldPrice
       ? '<p class="plan-price-old">' + plan.oldPrice + "</p>"
@@ -238,7 +306,7 @@ function renderPlans(plans) {
     return (
       '<article class="' + cardClasses + '">' +
         badgeHtml +
-        '<h2 class="plan-name">' + plan.name + "</h2>" +
+        '<h2 class="plan-name">' + buildPlanNameHtml(plan.name) + "</h2>" +
         '<p class="plan-limit">' + plan.limit + "</p>" +
         '<div class="plan-price-wrap">' +
           '<p class="plan-price">' + plan.price + '<span class="plan-price-unit">' + plan.unit + "</span></p>" +
