@@ -33,6 +33,19 @@
   --hero-section-padding: 36px;
   --hero-mobile-padding: 16px;
   --hero-slider-fade-ms: 600ms;
+
+  /* Usecase / Howto section tuning */
+  --section-shell-width: 1280px;
+  --section-main-gap: 28px;
+  --section-padding: 34px;
+  --section-card-radius: 28px;
+  --section-card-bg: rgba(255, 251, 245, 0.86);
+  --section-cta-width: 320px;
+  --section-cta-top: 24px;
+  --section-title-size: clamp(2rem, 4.2vw, 3.35rem);
+  --section-subtitle-size: clamp(1.45rem, 3vw, 2.3rem);
+  --usecase-heading-size: clamp(1.45rem, 2.2vw, 2rem);
+  --howto-step-badge-size: 82px;
 }
 
 *,
@@ -393,6 +406,297 @@ a {
   height: 1px;
 }
 
+/* Usecase / howto outer sections */
+.usecase-section,
+.howto-section {
+  max-width: var(--section-shell-width);
+  margin: 0 auto 28px;
+}
+
+.section-shell {
+  padding: var(--section-padding);
+  border-radius: 32px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 251, 245, 0.96)),
+    var(--hero-bg-color);
+  box-shadow: var(--shadow);
+}
+
+.section-shell-howto {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(207, 239, 250, 0.38), transparent 22%),
+    radial-gradient(circle at bottom right, rgba(215, 226, 253, 0.34), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(249, 248, 255, 0.97));
+}
+
+.section-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, var(--section-cta-width));
+  gap: var(--section-main-gap);
+  align-items: start;
+}
+
+.section-main {
+  min-width: 0;
+}
+
+.section-header {
+  margin-bottom: 22px;
+}
+
+.section-kicker {
+  margin: 0 0 10px;
+  color: var(--green);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  margin: 0;
+  color: var(--green);
+  font-size: var(--section-title-size);
+  font-weight: 800;
+  line-height: 1.18;
+}
+
+.usecase-title {
+  text-align: center;
+}
+
+/* Usecase cards */
+.usecase-list {
+  display: grid;
+  gap: 18px;
+}
+
+.usecase-card {
+  position: relative;
+  padding: 22px 24px 22px 28px;
+  border-radius: var(--section-card-radius);
+  background: var(--section-card-bg);
+  border: 1px solid rgba(24, 98, 58, 0.12);
+  box-shadow: 0 10px 28px rgba(56, 51, 41, 0.08);
+}
+
+.usecase-card::before {
+  content: "☑";
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  color: var(--hero-main-green);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.usecase-card::after {
+  content: "";
+  position: absolute;
+  left: 31px;
+  top: 64px;
+  bottom: 24px;
+  width: 3px;
+  border-radius: 999px;
+  background: rgba(24, 98, 58, 0.85);
+}
+
+.usecase-card-title {
+  margin: 0 0 14px 2.3rem;
+  color: var(--green);
+  font-size: var(--usecase-heading-size);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.usecase-points {
+  margin: 0;
+  padding-left: 4rem;
+  display: grid;
+  gap: 10px;
+  color: var(--text);
+  font-size: 1.16rem;
+  line-height: 1.75;
+}
+
+/* Howto banner and cards */
+.howto-banner {
+  position: relative;
+  width: fit-content;
+  min-width: min(100%, 300px);
+  margin: 0 auto 28px;
+  padding: 14px 34px;
+  border-radius: 26px;
+  background: var(--hero-main-green);
+  color: #ffffff;
+  font-size: clamp(1.45rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.howto-banner::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -22px;
+  width: 0;
+  height: 0;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  border-top: 22px solid var(--hero-main-green);
+  transform: translateX(-50%);
+}
+
+.howto-title {
+  text-align: center;
+}
+
+.howto-steps {
+  display: grid;
+  gap: 22px;
+}
+
+.howto-step-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  padding: 18px 18px 18px 0;
+}
+
+.howto-step-badge {
+  flex: 0 0 auto;
+  width: var(--howto-step-badge-size);
+  height: var(--howto-step-badge-size);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #0e7196, #0a4f75);
+  color: #ffffff;
+  border: 3px solid #d8edf4;
+  box-shadow: 0 10px 24px rgba(15, 79, 117, 0.18);
+}
+
+.howto-step-badge span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.howto-step-badge strong {
+  margin-top: 0.15rem;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.howto-step-body {
+  padding: 20px 24px 20px 20px;
+  border-radius: 0 0 24px 0;
+  background: rgba(255, 255, 255, 0.82);
+  border: 4px solid rgba(43, 70, 112, 0.12);
+  box-shadow: 0 12px 26px rgba(91, 95, 134, 0.08);
+}
+
+.howto-step-title {
+  margin: 0 0 12px;
+  color: #193156;
+  font-size: var(--section-subtitle-size);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.howto-step-points {
+  margin: 0;
+  padding-left: 1.3rem;
+  display: grid;
+  gap: 8px;
+  color: #18304e;
+  font-size: 1.15rem;
+  line-height: 1.72;
+}
+
+/* Shared sticky CTA card for middle sections */
+.section-cta-card {
+  position: sticky;
+  top: var(--section-cta-top);
+  padding: 22px 22px 20px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(248, 252, 249, 0.98));
+  border: 1px solid rgba(24, 98, 58, 0.12);
+  box-shadow: 0 16px 30px rgba(56, 51, 41, 0.10);
+}
+
+.section-cta-card-howto {
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245, 249, 255, 0.98));
+}
+
+.section-cta-kicker {
+  margin: 0 0 10px;
+  color: var(--hero-main-green);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section-cta-title {
+  margin: 0;
+  color: var(--green);
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.42;
+}
+
+.section-cta-text {
+  margin: 12px 0 0;
+  color: var(--text-soft);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.section-cta-buttons {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.section-cta-buttons .hero-primary-button,
+.section-cta-buttons .hero-demo-button {
+  width: 100%;
+  justify-content: center;
+  min-height: 72px;
+  padding: 12px 18px;
+  border-width: 4px;
+  box-shadow: 0 6px 0 rgba(24, 98, 58, 0.95);
+}
+
+.section-mini-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.section-mini-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: #f5f0cf;
+  color: #4a3b27;
+  font-size: 0.96rem;
+  font-weight: 700;
+}
+
 /* Pricing page wrapper */
 .pricing-section {
   max-width: 1280px;
@@ -746,6 +1050,45 @@ a {
     font-size: 1rem;
   }
 
+  .usecase-section,
+  .howto-section {
+    margin-bottom: 22px;
+  }
+
+  .section-shell {
+    padding: 24px 22px;
+  }
+
+  .section-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .section-cta-card {
+    position: static;
+    top: auto;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .usecase-card::after {
+    bottom: 22px;
+  }
+
+  .howto-step-card {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 0;
+  }
+
+  .howto-step-badge {
+    margin-inline: auto;
+  }
+
+  .howto-step-body {
+    padding: 18px 18px 18px 18px;
+    border-radius: 24px;
+  }
+
   .pricing-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -869,6 +1212,98 @@ a {
 
   .hero-note {
     font-size: 0.92rem;
+  }
+
+  .section-shell {
+    padding: 20px 16px;
+    border-radius: 24px;
+  }
+
+  .section-header {
+    margin-bottom: 18px;
+  }
+
+  .section-title {
+    font-size: clamp(1.7rem, 8vw, 2.35rem);
+  }
+
+  .usecase-card {
+    padding: 18px 16px 18px 20px;
+    border-radius: 22px;
+  }
+
+  .usecase-card::before {
+    left: 14px;
+    top: 16px;
+    font-size: 1.28rem;
+  }
+
+  .usecase-card::after {
+    left: 22px;
+    top: 54px;
+    bottom: 20px;
+  }
+
+  .usecase-card-title {
+    margin-left: 1.8rem;
+    margin-bottom: 12px;
+    font-size: 1.25rem;
+  }
+
+  .usecase-points {
+    padding-left: 2.4rem;
+    gap: 8px;
+    font-size: 1rem;
+  }
+
+  .howto-banner {
+    min-width: 0;
+    width: 100%;
+    margin-bottom: 22px;
+    padding: 12px 16px;
+    font-size: 1.5rem;
+  }
+
+  .howto-banner::after {
+    bottom: -18px;
+    border-left-width: 18px;
+    border-right-width: 18px;
+    border-top-width: 18px;
+  }
+
+  .howto-step-badge {
+    width: 72px;
+    height: 72px;
+  }
+
+  .howto-step-badge strong {
+    font-size: 1.75rem;
+  }
+
+  .howto-step-title {
+    font-size: 1.35rem;
+  }
+
+  .howto-step-points {
+    font-size: 1rem;
+    line-height: 1.68;
+  }
+
+  .section-cta-card {
+    padding: 18px 16px 16px;
+    border-radius: 22px;
+  }
+
+  .section-cta-title {
+    font-size: 1.24rem;
+  }
+
+  .section-cta-text {
+    font-size: 0.95rem;
+  }
+
+  .section-mini-nav {
+    justify-content: center;
   }
 
   .pricing-shell {
