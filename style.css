@@ -170,6 +170,7 @@ a {
 .hero-keywords {
   margin: 0;
   color: var(--hero-accent-brown);
+  font-family: "Noto Sans JP", sans-serif;
   font-size: calc(var(--hero-keyword-size) * 0.9);
   font-weight: 700;
   line-height: 1.26;
@@ -235,7 +236,7 @@ a {
 /* Center phone image position and size */
 .hero-phone-area {
   position: absolute;
-  left: 0;
+  left: -20px;
   top: -30px;
   bottom: auto;
   z-index: 3;
