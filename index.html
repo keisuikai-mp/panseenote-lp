@@ -2,9 +2,27 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>パンセノート LP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>パンセノート LP | プラン・料金</title>
+  <meta name="description" content="パンセノートLPのプラン・料金。通常購入、ベーシックからのアップグレード、スタンダードからのアップグレードを切り替えて表示します。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <h1>パンセノート LP 準備中</h1>
+  <main class="pricing-page">
+    <section class="pricing-section" id="pricing">
+      <div class="pricing-shell">
+        <header class="pricing-header">
+          <p class="pricing-kicker">Pricing</p>
+          <h1 id="pricing-title" class="pricing-title">プラン・料金</h1>
+          <p id="pricing-lead" class="pricing-lead">試用版は登録件数100件まで完全無料。有料プランはすべて買い切り型です。</p>
+        </header>
+        <div id="pricing-grid" class="pricing-grid" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
