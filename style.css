@@ -424,7 +424,6 @@ a {
 
 .section-shell-howto {
   position: relative;
-  overflow: hidden;
   background:
     radial-gradient(circle at top left, rgba(207, 239, 250, 0.38), transparent 22%),
     radial-gradient(circle at bottom right, rgba(215, 226, 253, 0.34), transparent 24%),
@@ -1304,6 +1303,36 @@ a {
 
   .section-mini-nav {
     justify-content: center;
+  }
+
+  .section-cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-top: 0;
+  }
+
+  .section-cta-buttons .hero-primary-button,
+  .section-cta-buttons .hero-demo-button {
+    flex: 1 1 calc(50% - 6px);
+    min-width: 0;
+    width: auto;
+  }
+
+  .section-cta-card {
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .section-cta-kicker,
+  .section-cta-title,
+  .section-cta-text,
+  .section-mini-nav {
+    display: none;
   }
 
   .pricing-shell {
