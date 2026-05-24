@@ -240,7 +240,7 @@ a {
 /* Center phone image position and size */
 .hero-phone-area {
   position: absolute;
-  left: calc(-30px - 3ch);
+  left: calc(-30px - 4ch);
   top: -30px;
   bottom: auto;
   z-index: 3;
@@ -283,7 +283,7 @@ a {
 .hero-free-bubble {
   position: absolute;
   top: -30px;
-  right: 22px;
+  right: calc(22px + 3ch);
   z-index: 4;
   padding: 16px 26px;
   border-radius: 999px;
@@ -293,7 +293,7 @@ a {
   font-weight: 800;
   line-height: 1;
   box-shadow: 0 14px 24px rgba(66, 168, 155, 0.24);
-  transform: translateY(-100%);
+  transform: none;
 }
 
 .hero-free-bubble::after {
