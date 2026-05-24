@@ -153,13 +153,26 @@ function measureChWidth(referenceEl, units) {
   return width;
 }
 
+function getTextRightEdge(referenceEl) {
+  const range = document.createRange();
+  range.selectNodeContents(referenceEl);
+
+  const rects = range.getClientRects();
+  if (rects.length > 0) {
+    return rects[rects.length - 1].right;
+  }
+
+  return referenceEl.getBoundingClientRect().right;
+}
+
 function initHeroPhonePosition() {
   const desktopMedia = window.matchMedia("(min-width: 881px)");
   const heroVisualColumn = document.querySelector(".hero-visual-column");
   const heroPhoneArea = document.querySelector(".hero-phone-area");
+  const heroPhoneSlider = document.querySelector(".hero-phone-slider");
   const valueAnchor = document.querySelector(".hero-value-copy-line:nth-child(2)");
 
-  if (!heroVisualColumn || !heroPhoneArea || !valueAnchor) return;
+  if (!heroVisualColumn || !heroPhoneArea || !heroPhoneSlider || !valueAnchor) return;
 
   function updatePhonePosition() {
     if (!desktopMedia.matches) {
@@ -167,10 +180,13 @@ function initHeroPhonePosition() {
       return;
     }
 
-    const anchorRect = valueAnchor.getBoundingClientRect();
+    const anchorRight = getTextRightEdge(valueAnchor);
     const visualRect = heroVisualColumn.getBoundingClientRect();
+    const phoneAreaRect = heroPhoneArea.getBoundingClientRect();
+    const phoneSliderRect = heroPhoneSlider.getBoundingClientRect();
+    const sliderInnerOffset = phoneSliderRect.left - phoneAreaRect.left;
     const gapPx = measureChWidth(valueAnchor, 1.5);
-    const leftPx = anchorRect.right - visualRect.left + gapPx;
+    const leftPx = anchorRight - visualRect.left + gapPx - sliderInnerOffset;
 
     heroVisualColumn.style.setProperty("--hero-phone-left", leftPx + "px");
   }
