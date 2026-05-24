@@ -185,7 +185,7 @@ function initHeroPhonePosition() {
     const phoneAreaRect = heroPhoneArea.getBoundingClientRect();
     const phoneSliderRect = heroPhoneSlider.getBoundingClientRect();
     const sliderInnerOffset = phoneSliderRect.left - phoneAreaRect.left;
-    const gapPx = measureChWidth(valueAnchor, 0.5);
+    const gapPx = measureChWidth(valueAnchor, 0);
     const leftPx = anchorRight - visualRect.left + gapPx - sliderInnerOffset;
 
     heroVisualColumn.style.setProperty("--hero-phone-left", leftPx + "px");
