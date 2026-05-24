@@ -203,7 +203,7 @@ function getPricingState(mode) {
   if (mode === "upgrade-trial") {
     return {
       title: "プラン・料金",
-      lead: "試用版は登録件数100件まで完全無料。有料プランはすべて買い切り型です。",
+      lead: "ご希望の登録上限件数によってプランを選択してください。有料プランは全て買い切り型で、アカウント登録も不要です。",
       plans: [
         {
           name: "試用版（トライアル）",
@@ -365,7 +365,7 @@ function getPricingState(mode) {
 
   return {
     title: "プラン・料金",
-    lead: "試用版は登録件数100件まで完全無料。有料プランはすべて買い切り型です。",
+    lead: "試用版は登録件数100件まで完全無料。有料プランは全て買い切り型で、アカウント登録も不要です。",
     plans: [
       {
         name: "試用版（トライアル）",
