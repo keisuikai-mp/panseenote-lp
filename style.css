@@ -170,7 +170,11 @@ a {
 .hero-keywords {
   margin: 0;
   color: var(--hero-accent-brown);
-  font-family: "Noto Sans JP", sans-serif;
+  font-family:
+    "Meiryo UI", Meiryo,
+    "Yu Gothic UI", "Yu Gothic",
+    "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    "Noto Sans JP", sans-serif;
   font-size: calc(var(--hero-keyword-size) * 0.9);
   font-weight: 700;
   line-height: 1.26;
