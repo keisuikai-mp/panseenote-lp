@@ -240,7 +240,7 @@ a {
 /* Center phone image position and size */
 .hero-phone-area {
   position: absolute;
-  left: -30px;
+  left: calc(-30px - 3ch);
   top: -30px;
   bottom: auto;
   z-index: 3;
