@@ -154,7 +154,7 @@ function measureChWidth(referenceEl, units) {
 }
 
 function initHeroPhonePosition() {
-  const desktopMedia = window.matchMedia("(min-width: 981px)");
+  const desktopMedia = window.matchMedia("(min-width: 881px)");
   const heroVisualColumn = document.querySelector(".hero-visual-column");
   const heroPhoneArea = document.querySelector(".hero-phone-area");
   const valueAnchor = document.querySelector(".hero-value-copy-line:nth-child(2)");
