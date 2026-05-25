@@ -374,8 +374,12 @@ function getPricingState(mode) {
         unit: "無料",
         note: "アカウント登録不要",
         features: BASE_FEATURES.trial,
-        buttonLabel: "今すぐ試す",
+        buttonLabel: "無料で試す",
+        buttonSubLabel: "（インストール不要）",
         href: TRIAL_URL,
+        secondaryHref: HERO_DEMO_URL,
+        secondaryButtonLabel: "サンプル入り",
+        secondaryButtonSubLabel: "体験版",
         trial: true,
       },
       {
@@ -426,6 +430,41 @@ function buildPlanNameHtml(name) {
   );
 }
 
+function buildPlanButtonHtml(buttonClasses, href, label, subLabel, disabled) {
+  const contentHtml = subLabel
+    ? '<span class="plan-btn-text-wrap">' +
+      '<span class="plan-btn-text-main">' +
+      escapeHtml(label) +
+      "</span>" +
+      '<span class="plan-btn-text-sub">' +
+      escapeHtml(subLabel) +
+      "</span></span>"
+    : escapeHtml(label);
+  const classes = [buttonClasses, subLabel ? "has-sub" : ""]
+    .filter(Boolean)
+    .join(" ");
+
+  if (disabled) {
+    return (
+      '<button class="' +
+      classes +
+      '" type="button" disabled aria-disabled="true">' +
+      contentHtml +
+      "</button>"
+    );
+  }
+
+  return (
+    '<a class="' +
+    classes +
+    '" href="' +
+    href +
+    '">' +
+    contentHtml +
+    "</a>"
+  );
+}
+
 function renderPlans(plans) {
   return plans
     .map(function (plan) {
@@ -455,19 +494,32 @@ function renderPlans(plans) {
         .filter(Boolean)
         .join(" ");
 
-      const buttonHtml = plan.disabled
-        ? '<button class="' +
-          buttonClasses +
-          '" type="button" disabled aria-disabled="true">' +
-          plan.buttonLabel +
-          "</button>"
-        : '<a class="' +
-          buttonClasses +
-          '" href="' +
-          plan.href +
-          '">' +
-          plan.buttonLabel +
-          "</a>";
+      const buttonHtml =
+        plan.secondaryHref && !plan.disabled
+          ? buildPlanButtonHtml(
+              buttonClasses,
+              plan.href,
+              plan.buttonLabel,
+              plan.buttonSubLabel,
+              false
+            ) +
+            buildPlanButtonHtml(
+              buttonClasses,
+              plan.secondaryHref,
+              plan.secondaryButtonLabel,
+              plan.secondaryButtonSubLabel,
+              false
+            )
+          : buildPlanButtonHtml(
+              buttonClasses,
+              plan.href,
+              plan.buttonLabel,
+              plan.buttonSubLabel,
+              !!plan.disabled
+            );
+      const actionClasses = ["plan-action", plan.secondaryHref && !plan.disabled ? "is-dual" : ""]
+        .filter(Boolean)
+        .join(" ");
 
       return (
         '<article class="' +
@@ -494,7 +546,9 @@ function renderPlans(plans) {
         '<ul class="plan-features">' +
         featureHtml +
         "</ul>" +
-        '<div class="plan-action">' +
+        '<div class="' +
+        actionClasses +
+        '">' +
         buttonHtml +
         "</div>" +
         "</article>"
