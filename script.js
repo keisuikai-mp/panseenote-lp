@@ -1,11 +1,11 @@
 const TRIAL_URL = "https://hca02673-beep.github.io/panseenote/";
 const HERO_DEMO_URL = "https://hca02673-beep.github.io/panseenote/?demo=1";
-const LS_NORMAL_BASIC_CHECKOUT_URL = "https://pnote-test-store.lemonsqueezy.com/checkout/buy/a0fe7a7d-a1e2-435c-864f-f85d38f95ebb?enabled=1440487%2C1440496%2C1440498";
-const LS_NORMAL_STANDARD_CHECKOUT_URL = "https://pnote-test-store.lemonsqueezy.com/checkout/buy/fa4935c5-1d3d-4a0b-9285-0d147777a18f?enabled=1440487%2C1440496%2C1440498";
-const LS_NORMAL_PREMIUM_CHECKOUT_URL = "https://pnote-test-store.lemonsqueezy.com/checkout/buy/f6372e89-3e57-429e-b57a-eb1fe9804d0b?enabled=1440487%2C1440496%2C1440498";
-const LS_BASIC_UPGRADE_STANDARD_CHECKOUT_URL = "https://pnote-test-store.lemonsqueezy.com/checkout/buy/8b135ea9-6a77-4552-97e4-2361a55007e4?enabled=1440501%2C1691433";
-const LS_BASIC_UPGRADE_PREMIUM_CHECKOUT_URL = "https://pnote-test-store.lemonsqueezy.com/checkout/buy/93753951-0b84-4ff9-8f7e-9061dc472cfb?enabled=1440501%2C1691433";
-const LS_STANDARD_UPGRADE_PREMIUM_CHECKOUT_URL = "https://pnote-test-store.lemonsqueezy.com/checkout/buy/69fa8894-4b2c-4d0e-9480-da06b81c7341?enabled=1691436";
+const LS_NORMAL_BASIC_CHECKOUT_URL = "https://panseenote.lemonsqueezy.com/checkout/buy/a0fe7a7d-a1e2-435c-864f-f85d38f95ebb?enabled=1440487%2C1440496%2C1440498";
+const LS_NORMAL_STANDARD_CHECKOUT_URL = "https://panseenote.lemonsqueezy.com/checkout/buy/fa4935c5-1d3d-4a0b-9285-0d147777a18f?enabled=1440487%2C1440496%2C1440498";
+const LS_NORMAL_PREMIUM_CHECKOUT_URL = "https://panseenote.lemonsqueezy.com/checkout/buy/f6372e89-3e57-429e-b57a-eb1fe9804d0b?enabled=1440487%2C1440496%2C1440498";
+const LS_BASIC_UPGRADE_STANDARD_CHECKOUT_URL = "https://panseenote.lemonsqueezy.com/checkout/buy/8b135ea9-6a77-4552-97e4-2361a55007e4?enabled=1440501%2C1691433";
+const LS_BASIC_UPGRADE_PREMIUM_CHECKOUT_URL = "https://panseenote.lemonsqueezy.com/checkout/buy/93753951-0b84-4ff9-8f7e-9061dc472cfb?enabled=1440501%2C1691433";
+const LS_STANDARD_UPGRADE_PREMIUM_CHECKOUT_URL = "https://panseenote.lemonsqueezy.com/checkout/buy/69fa8894-4b2c-4d0e-9480-da06b81c7341?enabled=1691436";
 
 /* Hero slider: image list is editable here */
 const HERO_SLIDE_IMAGES = [
