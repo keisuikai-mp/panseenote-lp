@@ -990,22 +990,28 @@ a {
   border-color: var(--green-dark);
 }
 
-.plan-btn.is-trial {
-  border-color: #ddd5c5;
-  background: var(--bg-soft);
-  color: #6e6a61;
+.plan-btn.is-trial:not([aria-disabled="true"]) {
+  border: 6px solid var(--green);
+  border-radius: 20px;
+  background: var(--hero-cta-bg);
+  color: #3a3228;
+  box-shadow: 0 8px 0 rgba(24, 98, 58, 0.95);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
-.plan-btn.is-trial:hover {
-  background: #ede6d8;
-  border-color: #ddd5c5;
-  color: #5f5b52;
+.plan-btn.is-trial:not([aria-disabled="true"]):hover {
+  background: var(--hero-cta-bg);
+  border-color: var(--green);
+  color: #3a3228;
+  transform: translateY(-2px);
+  box-shadow: 0 11px 0 rgba(24, 98, 58, 0.95);
 }
 
 .plan-btn[aria-disabled="true"] {
   background: #d8d3c8;
   border-color: #c2bcaf;
   color: #908b81;
+  box-shadow: none;
   pointer-events: none;
 }
 
