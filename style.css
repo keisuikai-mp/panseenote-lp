@@ -370,7 +370,7 @@ a {
 
 /* Right side green note panel */
 .hero-side-panel {
-  padding: 22px 38px 18px;
+  padding: 18px 28px 16px;
   border-radius: 28px;
   background: var(--hero-note-bg);
   color: #f4fffb;
@@ -379,9 +379,9 @@ a {
 /* Small anchor buttons */
 .hero-nav-buttons {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 12px;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
   justify-content: center;
 }
 
@@ -389,13 +389,14 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 96px;
+  flex: 1 1 0;
+  min-width: 0;
   min-height: 46px;
-  padding: 0 22px;
+  padding: 0 12px;
   border-radius: 999px;
   background: #f8edb2;
   color: #4c3b22;
-  font-size: 1.26rem;
+  font-size: 1.08rem;
   font-weight: 700;
 }
 
