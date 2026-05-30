@@ -379,7 +379,7 @@ a {
 /* Small anchor buttons */
 .hero-nav-buttons {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 14px;
   justify-content: center;
@@ -389,9 +389,9 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 116px;
+  min-width: 96px;
   min-height: 46px;
-  padding: 0 28px;
+  padding: 0 22px;
   border-radius: 999px;
   background: #f8edb2;
   color: #4c3b22;
@@ -1269,7 +1269,7 @@ a {
   }
 
   .hero-nav-button {
-    flex: 1 1 calc(33.333% - 8px);
+    flex: 1 1 calc(25% - 9px);
     min-width: 88px;
     font-size: 0.96rem;
   }

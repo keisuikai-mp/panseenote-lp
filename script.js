@@ -83,6 +83,27 @@ function getModeFromLocation() {
   return "normal";
 }
 
+function getUpgradeLicenseKeyFromLocation() {
+  const params = new URLSearchParams(window.location.search);
+  return String(params.get("licenseKey") || "").trim().toUpperCase();
+}
+
+function buildPlanCheckoutUrl(href) {
+  const baseHref = String(href || "").trim();
+  const mode = getModeFromLocation();
+  const licenseKey = getUpgradeLicenseKeyFromLocation();
+  if (!baseHref || !licenseKey) return baseHref;
+  if (mode !== "upgrade-basic" && mode !== "upgrade-standard") return baseHref;
+  if (baseHref.indexOf("lemonsqueezy.com/checkout/buy/") < 0) return baseHref;
+  try {
+    const url = new URL(baseHref);
+    url.searchParams.set("checkout[custom][licenseKey]", licenseKey);
+    return url.toString();
+  } catch (_) {
+    return baseHref;
+  }
+}
+
 function buildHeroSlidesHtml() {
   return HERO_SLIDE_IMAGES.map(function (image, index) {
     const classes = ["hero-phone-slide"];
@@ -432,6 +453,7 @@ function buildPlanNameHtml(name) {
 }
 
 function buildPlanButtonHtml(buttonClasses, href, label, subLabel, disabled) {
+  const resolvedHref = buildPlanCheckoutUrl(href);
   const contentHtml = subLabel
     ? '<span class="plan-btn-text-wrap">' +
       '<span class="plan-btn-text-main">' +
@@ -459,7 +481,7 @@ function buildPlanButtonHtml(buttonClasses, href, label, subLabel, disabled) {
     '<a class="' +
     classes +
     '" href="' +
-    href +
+    resolvedHref +
     '">' +
     contentHtml +
     "</a>"
