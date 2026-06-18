@@ -1,11 +1,11 @@
 const TRIAL_URL = "https://keisuikai-mp.github.io/panseenote/?openExternalBrowser=1";
 const HERO_DEMO_URL = "https://keisuikai-mp.github.io/panseenote/?demo=1&openExternalBrowser=1";
-const LS_NORMAL_BASIC_CHECKOUT_URL = "https://panseenote.lemonsqueezy.com/checkout/buy/a0fe7a7d-a1e2-435c-864f-f85d38f95ebb?enabled=1440487%2C1440496%2C1440498";
-const LS_NORMAL_STANDARD_CHECKOUT_URL = "https://panseenote.lemonsqueezy.com/checkout/buy/fa4935c5-1d3d-4a0b-9285-0d147777a18f?enabled=1440487%2C1440496%2C1440498";
-const LS_NORMAL_PREMIUM_CHECKOUT_URL = "https://panseenote.lemonsqueezy.com/checkout/buy/f6372e89-3e57-429e-b57a-eb1fe9804d0b?enabled=1440487%2C1440496%2C1440498";
-const LS_BASIC_UPGRADE_STANDARD_CHECKOUT_URL = "https://panseenote.lemonsqueezy.com/checkout/buy/8b135ea9-6a77-4552-97e4-2361a55007e4?enabled=1440501%2C1691433";
-const LS_BASIC_UPGRADE_PREMIUM_CHECKOUT_URL = "https://panseenote.lemonsqueezy.com/checkout/buy/93753951-0b84-4ff9-8f7e-9061dc472cfb?enabled=1440501%2C1691433";
-const LS_STANDARD_UPGRADE_PREMIUM_CHECKOUT_URL = "https://panseenote.lemonsqueezy.com/checkout/buy/69fa8894-4b2c-4d0e-9480-da06b81c7341?enabled=1691436";
+const LS_NORMAL_BASIC_CHECKOUT_URL = "https://panseenote.lemonsqueezy.com/checkout/buy/ab2cf987-afa2-4726-adad-676c6d2d6f19?discount=0&enabled=1809136%2C1809137%2C1809138";
+const LS_NORMAL_STANDARD_CHECKOUT_URL = "https://panseenote.lemonsqueezy.com/checkout/buy/15e079c0-a13a-4c09-a988-a34638486f38?discount=0&enabled=1809136%2C1809137%2C1809138";
+const LS_NORMAL_PREMIUM_CHECKOUT_URL = "https://panseenote.lemonsqueezy.com/checkout/buy/cbb81512-968a-48fc-a3d4-fceb1d02e6c7?discount=0&enabled=1809136%2C1809137%2C1809138";
+const LS_BASIC_UPGRADE_STANDARD_CHECKOUT_URL = "https://panseenote.lemonsqueezy.com/checkout/buy/44532d31-e487-4ab6-b3fa-b7a19c526b56?discount=0&enabled=1809139%2C1809140";
+const LS_BASIC_UPGRADE_PREMIUM_CHECKOUT_URL = "https://panseenote.lemonsqueezy.com/checkout/buy/b5ba10ef-c0dd-46ae-84af-29d1b8d982bd?discount=0&enabled=1809139%2C1809140";
+const LS_STANDARD_UPGRADE_PREMIUM_CHECKOUT_URL = "https://panseenote.lemonsqueezy.com/checkout/buy/bdc99be5-9c40-4f66-849a-ce000d4d5afd?discount=0&enabled=1809141";
 
 /* Hero slider: image list is editable here */
 const HERO_SLIDE_IMAGES = [
