@@ -223,7 +223,7 @@ function initHeroPhonePosition() {
 function getPricingState(mode) {
   if (mode === "upgrade-trial") {
     return {
-      title: "プラン・料金",
+      title: "プラン・料金（一度購入すれば継続課金はありません）",
       lead: "ご希望の登録上限件数によってプランを選択してください。有料プランは全て買い切り型で、アカウント登録も不要です。",
       plans: [
         {
@@ -385,7 +385,7 @@ function getPricingState(mode) {
   }
 
   return {
-    title: "プラン・料金",
+    title: "プラン・料金（一度購入すれば継続課金はありません）",
     lead: "試用版は登録件数100件まで完全無料。有料プランは全て買い切り型で、アカウント登録も不要です。",
     subNote: "・有料プランをご利用中のお客様のプランアップについては、別コースが用意されています。アプリ内のプランアップボタンからお申し込みください。",
     plans: [
