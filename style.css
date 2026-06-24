@@ -745,7 +745,7 @@ a {
 .section-cta-buttons .hero-primary-button,
 .section-cta-buttons .hero-demo-button {
   width: 100%;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 72px;
   padding: 12px 18px;
   border-width: 4px;
