@@ -1,3 +1,4 @@
+// LINE内ブラウザでは音声認識が制限されるため、LINEからの遷移時に外部ブラウザを開かせるLINE側の指定。アプリ本体で読む値ではない。
 const TRIAL_URL = "https://keisuikai-mp.github.io/panseenote/?openExternalBrowser=1";
 const HERO_DEMO_URL = "https://keisuikai-mp.github.io/panseenote/?demo=1&openExternalBrowser=1";
 const LS_NORMAL_BASIC_CHECKOUT_URL = "https://panseenote.lemonsqueezy.com/checkout/buy/ab2cf987-afa2-4726-adad-676c6d2d6f19?discount=0&enabled=1809136%2C1809137%2C1809138";
