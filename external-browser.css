@@ -1,0 +1,132 @@
+:root {
+  --guide-bg: #f6f2e9;
+  --guide-card: rgba(255, 255, 255, 0.94);
+  --guide-text: #2a2a24;
+  --guide-text-soft: #5f5d55;
+  --guide-accent: #18623a;
+  --guide-line: #e5dccd;
+  --guide-shadow: 0 18px 44px rgba(56, 51, 41, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: "Noto Sans JP", sans-serif;
+  color: var(--guide-text);
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.5), transparent 28%),
+    var(--guide-bg);
+}
+
+a {
+  color: inherit;
+}
+
+.guide-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px 16px;
+}
+
+.guide-card {
+  width: min(100%, 720px);
+  padding: 32px 24px;
+  border: 1px solid var(--guide-line);
+  border-radius: 28px;
+  background: var(--guide-card);
+  box-shadow: var(--guide-shadow);
+}
+
+.guide-kicker {
+  margin: 0 0 12px;
+  color: var(--guide-accent);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.guide-title {
+  margin: 0;
+  color: var(--guide-accent);
+  font-size: clamp(1.8rem, 5.6vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.guide-message {
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: 22px;
+  background: #fffdf8;
+  border: 1px solid var(--guide-line);
+}
+
+.guide-lead {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.75;
+}
+
+.guide-body {
+  margin: 12px 0 0;
+  color: var(--guide-text-soft);
+  font-size: 1.02rem;
+  line-height: 1.9;
+}
+
+.guide-note {
+  margin-top: 20px;
+  color: var(--guide-text-soft);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.guide-note p,
+.guide-manual-link {
+  margin: 0;
+}
+
+.guide-manual-link {
+  margin-top: 16px;
+}
+
+.guide-manual-link a {
+  color: var(--guide-accent);
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .guide-page {
+    padding: 16px 12px;
+  }
+
+  .guide-card {
+    padding: 24px 18px;
+    border-radius: 22px;
+  }
+
+  .guide-message {
+    padding: 18px 16px;
+    border-radius: 18px;
+  }
+
+  .guide-lead {
+    font-size: 1.04rem;
+  }
+
+  .guide-body {
+    font-size: 0.97rem;
+    line-height: 1.8;
+  }
+}

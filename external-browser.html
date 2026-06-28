@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>外部ブラウザで開いてください｜パンセノート</title>
+  <meta name="robots" content="noindex">
+  <script src="browser-gate.js?v=20260629a"></script>
+  <script>
+    window.panseenoteLpBrowserGate?.initExternalBrowserPage();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="external-browser.css?v=20260629a">
+</head>
+<body>
+  <main class="guide-page">
+    <section class="guide-card" aria-labelledby="guide-title">
+      <p class="guide-kicker">Panseenote</p>
+      <h1 id="guide-title" class="guide-title" data-guide-title hidden>iPhone/iPad の Facebookまたは X をご利用の方へ</h1>
+
+      <div class="guide-message" data-guide-facebook hidden>
+        <p class="guide-lead">Facebook では パンセノートの音声認識機能が利用できません。</p>
+        <p class="guide-body">右上の「…」から「外部ブラウザーで開く」を選び、Safariで開いてください。</p>
+      </div>
+
+      <div class="guide-message" data-guide-x hidden>
+        <p class="guide-lead">X では パンセノートの音声認識機能が利用できません。</p>
+        <p class="guide-body">画面下部の github.io 横にある「…」（縦に点が3つ）から「ブラウザで開く」を選び、Safariで開いてください。</p>
+      </div>
+
+      <div class="guide-message guide-message-fallback" data-guide-fallback hidden>
+        <p class="guide-lead">このページは外部ブラウザ誘導用です。</p>
+        <p class="guide-body">Safari で開くと、自動的に通常のパンセノートLPへ戻ります。</p>
+        <p class="guide-manual-link"><a href="./index.html">通常LPを開く</a></p>
+      </div>
+
+      <div class="guide-note">
+        <p>Safariで開き直すと、この案内ページは自動で閉じて通常LPへ戻ります。</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
