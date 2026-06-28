@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iPhone Safari 音声認識 単体テスト</title>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <style>
+    :root {
+      --bg: #f6f2e9;
+      --card: #ffffff;
+      --text: #2a2a24;
+      --text-soft: #6f6d65;
+      --green: #18623a;
+      --green-dark: #0f4c2c;
+      --line: #e7e0d2;
+      --shadow: 0 18px 44px rgba(56, 51, 41, 0.10);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      font-family: "Noto Sans JP", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.42), transparent 28%),
+        var(--bg);
+    }
+
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 20px 16px 40px;
+    }
+
+    .card {
+      padding: 24px 20px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--green);
+      font-size: clamp(1.8rem, 6vw, 2.4rem);
+      line-height: 1.25;
+    }
+
+    .lead {
+      margin: 14px 0 0;
+      color: var(--text-soft);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .actions {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .button-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .primary-button,
+    .secondary-button {
+      min-height: 56px;
+      padding: 0 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .primary-button {
+      border: 3px solid var(--green);
+      background: #f4e1bd;
+      color: #3a3228;
+      box-shadow: 0 6px 0 rgba(24, 98, 58, 0.95);
+    }
+
+    .primary-button:disabled {
+      cursor: default;
+      opacity: 0.65;
+      box-shadow: none;
+    }
+
+    .secondary-button {
+      border: 2px solid var(--green);
+      background: #ffffff;
+      color: var(--green);
+    }
+
+    .section-title {
+      margin: 26px 0 10px;
+      color: var(--green);
+      font-size: 1.05rem;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .kv-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .kv-item {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: #fbf8f1;
+      border: 1px solid var(--line);
+    }
+
+    .kv-label {
+      display: block;
+      margin: 0 0 8px;
+      color: var(--green);
+      font-size: 0.9rem;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .kv-value {
+      margin: 0;
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      white-space: pre-wrap;
+    }
+
+    .log-box {
+      margin: 0;
+      padding: 14px 16px;
+      min-height: 240px;
+      border-radius: 18px;
+      background: #1f231f;
+      color: #eef7ef;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 14px 12px 28px;
+      }
+
+      .card {
+        padding: 18px 16px;
+        border-radius: 20px;
+      }
+
+      .button-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <h1>iPhone Safari 音声認識 単体テスト</h1>
+      <p class="lead">パンセノートの処理を通さず、ブラウザの音声認識を連続実行できるか確認するテストです。</p>
+
+      <div class="actions">
+        <button id="start-button" class="primary-button" type="button">音声認識を開始</button>
+        <div class="button-row">
+          <button id="copy-button" class="secondary-button" type="button">ログをコピー</button>
+          <button id="clear-button" class="secondary-button" type="button">ログを消去</button>
+        </div>
+      </div>
+
+      <h2 class="section-title">状態</h2>
+      <ul class="kv-list">
+        <li class="kv-item">
+          <span class="kv-label">実行回数</span>
+          <p id="run-count" class="kv-value">0</p>
+        </li>
+        <li class="kv-item">
+          <span class="kv-label">navigator.userAgent</span>
+          <p id="user-agent" class="kv-value"></p>
+        </li>
+        <li class="kv-item">
+          <span class="kv-label">最新の認識結果</span>
+          <p id="latest-result" class="kv-value">（まだありません）</p>
+        </li>
+      </ul>
+
+      <h2 class="section-title">時刻付きイベントログ</h2>
+      <pre id="event-log" class="log-box">（まだログはありません）</pre>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var RecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition;
+      var startButtonEl = document.getElementById("start-button");
+      var copyButtonEl = document.getElementById("copy-button");
+      var clearButtonEl = document.getElementById("clear-button");
+      var runCountEl = document.getElementById("run-count");
+      var userAgentEl = document.getElementById("user-agent");
+      var latestResultEl = document.getElementById("latest-result");
+      var eventLogEl = document.getElementById("event-log");
+
+      var runCount = 0;
+      var logLines = [];
+
+      function nowStamp() {
+        var now = new Date();
+        var hh = String(now.getHours()).padStart(2, "0");
+        var mm = String(now.getMinutes()).padStart(2, "0");
+        var ss = String(now.getSeconds()).padStart(2, "0");
+        var ms = String(now.getMilliseconds()).padStart(3, "0");
+        return hh + ":" + mm + ":" + ss + "." + ms;
+      }
+
+      function renderLog() {
+        eventLogEl.textContent = logLines.length ? logLines.join("\n") : "（まだログはありません）";
+      }
+
+      function addLog(message) {
+        logLines.push("[" + nowStamp() + "] " + message);
+        renderLog();
+      }
+
+      function setStartEnabled(enabled) {
+        startButtonEl.disabled = !enabled;
+      }
+
+      function updateLatestResult(text) {
+        latestResultEl.textContent = text || "（まだありません）";
+      }
+
+      function updateRunCount() {
+        runCountEl.textContent = String(runCount);
+      }
+
+      function copyLogs() {
+        var text = logLines.length ? logLines.join("\n") : "（まだログはありません）";
+
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+          return navigator.clipboard.writeText(text).then(function () {
+            addLog("log copied");
+          }).catch(function (error) {
+            addLog("log copy failed: " + (error && error.message ? error.message : String(error)));
+          });
+        }
+
+        var textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "absolute";
+        textarea.style.left = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+          document.execCommand("copy");
+          addLog("log copied");
+        } catch (error) {
+          addLog("log copy failed: " + (error && error.message ? error.message : String(error)));
+        }
+
+        document.body.removeChild(textarea);
+        return Promise.resolve();
+      }
+
+      function clearLogs() {
+        logLines = [];
+        renderLog();
+      }
+
+      function startRecognition() {
+        if (!RecognitionCtor) {
+          addLog("SpeechRecognition unsupported");
+          return;
+        }
+
+        runCount += 1;
+        updateRunCount();
+        setStartEnabled(false);
+
+        var recognition = new RecognitionCtor();
+        recognition.lang = "ja-JP";
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        addLog("recognition instance created");
+
+        recognition.onstart = function () {
+          addLog("onstart");
+        };
+
+        recognition.onaudiostart = function () {
+          addLog("onaudiostart");
+        };
+
+        recognition.onsoundstart = function () {
+          addLog("onsoundstart");
+        };
+
+        recognition.onspeechstart = function () {
+          addLog("onspeechstart");
+        };
+
+        recognition.onresult = function (event) {
+          var text = "";
+
+          try {
+            text = event.results[0][0].transcript || "";
+          } catch (_) {
+            text = "";
+          }
+
+          updateLatestResult(text || "（空文字）");
+          addLog("onresult: " + (text || "（空文字）"));
+        };
+
+        recognition.onspeechend = function () {
+          addLog("onspeechend");
+        };
+
+        recognition.onsoundend = function () {
+          addLog("onsoundend");
+        };
+
+        recognition.onaudioend = function () {
+          addLog("onaudioend");
+        };
+
+        recognition.onerror = function (event) {
+          var errorName = event && event.error ? event.error : "unknown";
+          var message = event && event.message ? event.message : "";
+          addLog("onerror: " + errorName + (message ? " / " + message : ""));
+          setStartEnabled(true);
+        };
+
+        recognition.onend = function () {
+          addLog("onend");
+          setStartEnabled(true);
+        };
+
+        addLog("start requested");
+
+        try {
+          recognition.start();
+        } catch (error) {
+          addLog("recognition.start() exception: " + (error && error.message ? error.message : String(error)));
+          setStartEnabled(true);
+        }
+      }
+
+      userAgentEl.textContent = navigator.userAgent || "（空）";
+      renderLog();
+
+      if (!RecognitionCtor) {
+        addLog("SpeechRecognition unsupported");
+      }
+
+      startButtonEl.addEventListener("click", startRecognition);
+      copyButtonEl.addEventListener("click", function () {
+        copyLogs();
+      });
+      clearButtonEl.addEventListener("click", clearLogs);
+    })();
+  </script>
+</body>
+</html>
